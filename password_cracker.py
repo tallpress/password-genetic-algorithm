@@ -38,3 +38,10 @@ class PasswordCracker(object):
             calculated_population[word] = score
         return sorted(calculated_population.items(), key = itemgetter(1), reverse=True)
 
+    def selectFromPopulation(self, population, good_sample_size, random_sample_size):
+        good_samples = population[:good_sample_size]
+        remaining_population = population[good_sample_size:]
+        random.shuffle(remaining_population)
+        random_samples = population[:random_sample_size]
+        concat_list = good_samples + random_samples
+        return concat_list

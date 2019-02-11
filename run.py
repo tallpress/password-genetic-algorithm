@@ -1,5 +1,6 @@
 from password_cracker import PasswordCracker
 
-a = PasswordCracker('ab')
-population = a.generate_populus(5000, 2)
-print(a.computePopulation(population))
+cracker = PasswordCracker('ab')
+population = cracker.generate_populus(100, 2)
+computed_population = cracker.computePopulation(population)
+print(cracker.selectFromPopulation(computed_population, 5, 1))
