@@ -48,16 +48,14 @@ class PasswordCracker(object):
         return concat_list
 
     def create_next_generation(self, population):
-        # print(len(population))
+        population = [x[0] for x in population]
         next_generation = []
-        for i in range(self.population_size-1):
-            index_1 = random.randint(0, len(population))
-            index_2 = random.randint(0, len(population))
+        for i in range(self.population_size):
+            index_1 = random.randint(0, len(population) - 1)
+            index_2 = random.randint(0, len(population) - 1)
             child = self.breed(population[index_1], population[index_2])
             next_generation.append(child)
         return next_generation
-        # take two from population at random
-        # breed them
 
 
     def breed(self, parent_a, parent_b):
