@@ -3,9 +3,12 @@ import string
 from operator import itemgetter
 
 class PasswordCracker(object):
-    def __init__(self, password, population_size):
+    def __init__(self, password, population_size, mutation_rate):
         self.password = password
         self.population_size = population_size
+        self.mutation_rate = mutation_rate
+        self.available_genes = string.ascii_letters
+        # self.available_genes = string.ascii_letters + string.digits
 
     def test_word(self, word_to_test):
         score = 0
@@ -27,9 +30,7 @@ class PasswordCracker(object):
         return population
 
     def generate_word(self, word_length):
-        # choice_of_characters = string.ascii_letters + string.digits
-        choice_of_characters = string.ascii_letters
-        return ''.join(random.choice(choice_of_characters)
+        return ''.join(random.choice(self.available_genes)
             for _ in range(word_length))
 
     def compute_population(self, population):
@@ -57,11 +58,13 @@ class PasswordCracker(object):
             next_generation.append(child)
         return next_generation
 
-
     def breed(self, parent_a, parent_b):
         child = ""
         for i in range(len(parent_a)):
-            if random.random() < 0.5:
+            random_number = random.random()
+            if random_number < self.mutation_rate:
+                child += random.choice(self.available_genes)
+            elif random_number < 0.5:
                 child += parent_a[i]
             else:
                 child += parent_b[i]
