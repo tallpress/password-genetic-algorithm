@@ -13,8 +13,8 @@ class PasswordCracker(object):
             return score
         else:
             i = 0
+            score = 0
             while (i < len(self.password)):
-                score = 0
                 if (self.password[i] == word_to_test[i]):
                     score+=1
                 i+=1
