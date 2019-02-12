@@ -1,5 +1,5 @@
 from password_cracker import PasswordCracker
-password = 'anb'
+password = 'password'
 a = PasswordCracker(password, 1000, 0.001)
 population = a.generate_populus(len(password))
 i = 0
