@@ -1,6 +1,7 @@
 import random
 import string
 from operator import itemgetter
+from organism import Organism
 
 class PasswordCracker(object):
     def __init__(self, password, population_size, mutation_rate):
@@ -10,7 +11,7 @@ class PasswordCracker(object):
         self.available_genes = string.ascii_letters
         # self.available_genes = string.ascii_letters + string.digits
 
-    def test_word(self, word_to_test):
+    def fitness_test(self, word_to_test):
         score = 0
         if (len(word_to_test) != len(self.password)):
             return score
@@ -36,7 +37,7 @@ class PasswordCracker(object):
     def compute_population(self, population):
         calculated_population = {}
         for word in population:
-            score = self.test_word(word)
+            score = self.fitness_test(word)
             calculated_population[word] = score
         return sorted(calculated_population.items(), key = itemgetter(1), reverse=True)
 
