@@ -21,8 +21,8 @@ class Population(object):
     def fitness_test(self):
         calculated_population = {}
         for organism in population:
-            fitness = self.__test_fitness(organism)
-            calculated_population[organism] = fitness
+            organism_fitness = self.__test_fitness(organism)
+            calculated_population[organism] = organism_fitness
         return sorted(calculated_population.items(), key = itemgetter(1), reverse=True)
 
     def __test_fitness(self, organism):
@@ -37,3 +37,17 @@ class Population(object):
                     fitness+=1
                 i+=1
             return fitness * 100 / len(self.winning_genes)
+
+    def natural_selection(self):
+        population = [x[0] for x in self.populus]
+        next_generation = []
+        for i in range(self.size):
+            index_1 = random.randint(0, len(self.populus) - 1)
+            index_2 = random.randint(0, len(self.populus) - 1)
+            child = Organism(population[index_1], population[index_2])
+            next_generation.append(child)
+        return next_generation
+
+    def evolve(self, number_of_interations):
+        i = 0
+        while (i < number_of_interations):
