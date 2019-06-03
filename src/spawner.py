@@ -22,11 +22,12 @@ class Spawner(object):
 
     def crossover(self, parent_a, parent_b, mutation_rate):
         child_genes = ""
+        halfway_point = (1 + (1-mutation_rate))/2
         for i in range(len(parent_a.genes)):
             random_number = random.random()
             if random_number < mutation_rate:
                 child_genes += random.choice(self.available_genes)
-            elif random_number < 0.5:
+            elif random_number < halfway_point:
                 child_genes += parent_a.genes[i]
             else:
                 child_genes += parent_b.genes[i]

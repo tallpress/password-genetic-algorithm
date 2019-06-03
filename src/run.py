@@ -7,7 +7,7 @@ a = Spawner()
 generation = a.spawn_generation('tomallpress', population_size)
 
 c = GeneticAlgo(population_size, 0.01, 'tomallpress', 100, 1)
-for i in range(5):
+for i in range(20):
     generation = c.get_next_generation(generation)
 
 generation.display()
