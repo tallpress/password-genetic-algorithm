@@ -1,7 +1,7 @@
 import random
 import string
 from operator import itemgetter
-from organism import Organism
+# from organism import Organism
 
 class PasswordCracker(object):
     def __init__(self, password, population_size, mutation_rate):

@@ -1,9 +1,9 @@
 from password_cracker import PasswordCracker
-password = 'password'
+password = 'tomallpres'
 a = PasswordCracker(password, 1000, 0.001)
 population = a.generate_populus(len(password))
 i = 0
-while (i < 2000):
+while (i < 10000):
     computed_population = a.compute_population(population)
     selection = a.select_from_population(computed_population, 10,1)
     population = a.create_next_generation(selection)
