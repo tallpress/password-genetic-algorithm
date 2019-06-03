@@ -6,8 +6,10 @@ class Generation(object):
         self.population = population
 
     def display(self):
+        genes = []
         for individual in self.population:
-            print(individual.display())
+            genes.append(individual.display())
+        return genes
 
     def score(self, target):
         for individual in self.population:
