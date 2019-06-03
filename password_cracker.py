@@ -68,5 +68,6 @@ class PasswordCracker(object):
             elif random_number < 0.5:
                 child += parent_a[i]
             else:
+
                 child += parent_b[i]
         return child
